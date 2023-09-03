@@ -10,7 +10,7 @@ This tool takes a trasparent png image (can be grayscale colors are removed duri
 
 Just take a look at example below
 
-
+![Zrzut ekranu 2023-09-3 o 20 24 33](https://github.com/piotreknow02/novision/assets/65082017/1242d433-f946-495e-9e13-6d3b48cdfc73)
 
 ### Usage
 
