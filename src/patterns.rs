@@ -2,7 +2,7 @@ use rand::{thread_rng, Rng};
 use predefined::{full_pairs, all_patterns};
 
 //                     Top           Down
-#[derive(Eq, PartialEq)]
+#[derive(Eq, PartialEq, Clone, Copy)]
 pub struct Pattern(pub (bool, bool), pub (bool, bool));
 
 fn is_full(patterns: (Pattern, Pattern)) -> bool {
