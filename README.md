@@ -25,7 +25,7 @@ cargo build --release
 ```
 
 ```bash
-sudomv target/release/novision /usr/local/bin
+sudo mv target/release/novision /usr/local/bin
 ```
 
 
