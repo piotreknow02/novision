@@ -29,17 +29,11 @@ impl Pattern {
 
 fn insert_pattern(target: &mut ImageBuffer<LumaA<u8>, Vec<u8>>, position: (u32, u32), p: &Pattern) {
     let pattern_values = p.to_pixels();
-
     
     set_pix!(position.0, position.1, target, pattern_values[0][0]);
     set_pix!(position.0, position.1 + 1, target, pattern_values[0][1]);
     set_pix!(position.0 + 1, position.1, target, pattern_values[1][0]);
     set_pix!(position.0 + 1, position.1 + 1, target, pattern_values[1][1]);
-
-    // target[(position.0, position.1)] = Luma(pattern_values[0][0]);
-    // target[(position.0, position.1 + 1)] = Luma(pattern_values[0][1]);
-    // target[(position.0 + 1, position.1)] = Luma(pattern_values[1][0]);
-    // target[(position.0 + 1, position.1 + 1)] = Luma(pattern_values[1][1]);
 }
 
 pub fn generate_images(source_image: ImageBuffer<LumaA<u8>, Vec<u8>>) -> (ImageBuffer<LumaA<u8>, Vec<u8>>, ImageBuffer<LumaA<u8>, Vec<u8>>) {
