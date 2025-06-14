@@ -1,4 +1,4 @@
-use rand::{thread_rng, Rng};
+use rand::{rng, Rng};
 use predefined::{full_pairs, all_patterns};
 
 //                     Top           Down
@@ -18,9 +18,9 @@ fn is_full(patterns: (Pattern, Pattern)) -> bool {
 }
 
 pub fn get_full() -> (Pattern, Pattern) {
-    let mut rng = thread_rng();
-    let idx = rng.gen_range(0..full_pairs.len()) as usize;
-    if rng.gen_bool(0.5) {
+    let mut thread_rng = rng();
+    let idx = thread_rng.random_range(0..full_pairs.len()) as usize;
+    if thread_rng.random_bool(0.5) {
         full_pairs[idx]
     } else {
         (full_pairs[idx].1, full_pairs[idx].0)
@@ -28,16 +28,16 @@ pub fn get_full() -> (Pattern, Pattern) {
 }
 
 pub fn get_empty() -> (Pattern, Pattern) {
-    let mut rng = thread_rng();
+    let mut thread_rng = rng();
     loop {
-        let idx1 = rng.gen_range(0..all_patterns.len()) as usize;
-        let idx2 = rng.gen_range(0..all_patterns.len()) as usize;
+        let idx1 = thread_rng.random_range(0..all_patterns.len()) as usize;
+        let idx2 = thread_rng.random_range(0..all_patterns.len()) as usize;
         if !is_full((all_patterns[idx1], all_patterns[idx2])) {
             return (all_patterns[idx1], all_patterns[idx2])
         }
     }
 }
-    
+
 #[allow(non_upper_case_globals)]
 pub mod predefined {
     use crate::patterns::Pattern;
@@ -48,7 +48,7 @@ pub mod predefined {
     const top: Pattern = Pattern((true, true), (false, false));
     const checker1: Pattern = Pattern((true, false), (false, true));
     const checker2: Pattern = Pattern((false, true), (true, false));
-    
+
     pub const all_patterns: [Pattern; 6] = [
         left,
         right,
@@ -63,4 +63,3 @@ pub mod predefined {
         (checker1, checker2),
     ];
 }
-
